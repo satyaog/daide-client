@@ -16,7 +16,7 @@
 
 #include "daide_client/map_and_units.h"
 #include "bot_type.h"
-#include "holdbot.h"
+#include "hold_bot.h"
 
 using DAIDE::TokenMessage;
 

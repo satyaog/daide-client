@@ -17,11 +17,11 @@
 #ifndef DAIDE_CLIENT_DAIDE_CLIENT_BASE_BOT_H
 #define DAIDE_CLIENT_DAIDE_CLIENT_BASE_BOT_H
 
-#include "ai_client_types.h"
-#include "token_message.h"
-#include "map_and_units.h"
-#include "error_log.h"
-#include "socket.h"
+#include "daide_client/ai_client_types.h"
+#include "daide_client/token_message.h"
+#include "daide_client/map_and_units.h"
+#include "daide_client/error_log.h"
+#include "daide_client/socket.h"
 
 namespace DAIDE {
 

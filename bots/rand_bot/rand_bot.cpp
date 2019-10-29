@@ -16,7 +16,7 @@
 
 #include "daide_client/map_and_units.h"
 #include "bot_type.h"
-#include "randbot.h"
+#include "rand_bot.h"
 
 using DAIDE::MapAndUnits;
 using DAIDE::TokenMessage;

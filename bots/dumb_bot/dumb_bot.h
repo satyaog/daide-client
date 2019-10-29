@@ -17,7 +17,7 @@
 #ifndef DAIDE_CLIENT_BOTS_DUMBBOT_DUMBBOT_H
 #define DAIDE_CLIENT_BOTS_DUMBBOT_DUMBBOT_H
 
-#include "daide_client/base_bot.h"
+#include "base_bot.h"
 #include "daide_client/map_and_units.h"
 
 namespace DAIDE {

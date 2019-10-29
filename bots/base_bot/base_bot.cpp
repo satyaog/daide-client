@@ -16,12 +16,12 @@
 
 #include <iostream>
 #include <memory>
-#include "socket.h"
-#include "error_log.h"
-#include "map_and_units.h"
-#include "token_text_map.h"
-#include "ai_client.h"
 #include "base_bot.h"
+#include "daide_client/socket.h"
+#include "daide_client/error_log.h"
+#include "daide_client/map_and_units.h"
+#include "daide_client/token_text_map.h"
+#include "daide_client/ai_client.h"
 
 using DAIDE::BaseBot;
 
