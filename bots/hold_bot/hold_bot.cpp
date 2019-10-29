@@ -6,7 +6,7 @@
  * (C) David Norman 2002 david@ellought.demon.co.uk
  *
  * This software may be reused for non-commercial purposes without charge, and
- * without notifying the author. Use of any part of this software for commercial 
+ * without notifying the author. Use of any part of this software for commercial
  * purposes without permission from the Author is prohibited.
  *
  * Modified by John Newbury
@@ -21,7 +21,7 @@
 using DAIDE::TokenMessage;
 
 void HoldBot::send_nme_or_obs() {
-    send_name_and_version_to_server(BOT_FAMILY, BOT_GENERATION);
+    send_name_and_version_to_server(get_bot_name(), BOT_GENERATION);
 }
 
 void HoldBot::process_now_message(const TokenMessage & /*incoming_message*/) {

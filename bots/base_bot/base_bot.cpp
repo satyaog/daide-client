@@ -629,10 +629,15 @@ void BaseBot::process_rej_nme_message(const TokenMessage & /*incoming_msg*/, con
     }
 }
 
+std::string BaseBot::get_bot_name() const
+{
+    return (m_parameters.power_specified ? m_parameters.power + "__" + BOT_FAMILY : BOT_FAMILY);
+}
+
 // Determine whether to try and reconnect to game. Default uses values passed on command line.
 bool BaseBot::get_reconnect_details(Token &power, int &passcode) {
     if (m_parameters.reconnection_specified) {
-        power = TokenTextMap::instance()->m_text_to_token_map[m_parameters.reconnect_power];
+        power = TokenTextMap::instance()->m_text_to_token_map[m_parameters.power];
         passcode = m_parameters.reconnect_passcode;
     }
     return m_parameters.reconnection_specified;
@@ -857,11 +862,18 @@ bool BaseBot::extract_parameters(const std::string &command_line_a, COMMAND_LINE
                 parameters.log_level = stoi(parameter);
                 break;
 
+            case 'c':
+                parameters.power_specified = true;
+                parameters.power = parameter.substr(0, 3);
+                for (auto &c : parameters.power) { c = static_cast<char>(toupper(c)); }
+                break;
+
             case 'r':
                 if (parameter[3] == ':') {
                     parameters.reconnection_specified = true;
-                    parameters.reconnect_power = parameter.substr(0, 3);
-                    for (auto &c : parameters.reconnect_power) { c = static_cast<char>(toupper(c)); }
+                    parameters.power_specified = true;
+                    parameters.power = parameter.substr(0, 3);
+                    for (auto &c : parameters.power) { c = static_cast<char>(toupper(c)); }
                     parameters.reconnect_passcode = stoi(parameter.substr(4));
                 } else {
                     std::cout << "-r should be followed by 'POW:passcode'\nPOW should be three characters" << std::endl;
@@ -870,7 +882,7 @@ bool BaseBot::extract_parameters(const std::string &command_line_a, COMMAND_LINE
 
             default:
                 std::cout << "Usage: " << BOT_FAMILY << ".exe "
-                          << "[-sServerName|-iIPAddress] [-pPortNumber] [-lLogLevel] [-rPOW:passcode]" << std::endl;
+                          << "[-sServerName|-iIPAddress] [-pPortNumber] [-lLogLevel] [-cPOW] [-rPOW:passcode]" << std::endl;
                 extracted_ok = false;
         }
         param_start = m_command_line.find('-', search_start);
