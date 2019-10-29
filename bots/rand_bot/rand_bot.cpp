@@ -18,6 +18,7 @@
 #include "bot_type.h"
 #include "rand_bot.h"
 
+using DAIDE::RandBot;
 using DAIDE::MapAndUnits;
 using DAIDE::TokenMessage;
 
@@ -44,6 +45,7 @@ void RandBot::process_now_message(const TokenMessage & /*incoming_message*/) {
     MapAndUnits::PROVINCE_COASTS *build_coast_info {nullptr};
 
     if (!m_map_and_units->game_over) {
+        send_message_to_server(TOKEN_COMMAND_NOT & TOKEN_COMMAND_GOF);
 
         // Movement - Order units to move randomly.
         if ((m_map_and_units->current_season == DAIDE::TOKEN_SEASON_SPR)
@@ -98,5 +100,6 @@ void RandBot::process_now_message(const TokenMessage & /*incoming_message*/) {
 
         // Submitting orders
         send_orders_to_server();
+        send_message_to_server(TOKEN_COMMAND_GOF);
     }
 }

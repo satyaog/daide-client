@@ -18,6 +18,7 @@
 #include "bot_type.h"
 #include "hold_bot.h"
 
+using DAIDE::HoldBot;
 using DAIDE::TokenMessage;
 
 void HoldBot::send_nme_or_obs() {
@@ -25,6 +26,7 @@ void HoldBot::send_nme_or_obs() {
 }
 
 void HoldBot::process_now_message(const TokenMessage & /*incoming_message*/) {
+    send_message_to_server(TOKEN_COMMAND_NOT & TOKEN_COMMAND_GOF);
 
     // Movement - Order all units to hold.
     if ((m_map_and_units->current_season == DAIDE::TOKEN_SEASON_SPR)
@@ -61,4 +63,5 @@ void HoldBot::process_now_message(const TokenMessage & /*incoming_message*/) {
 
     // Submitting orders
     send_orders_to_server();
+    send_message_to_server(TOKEN_COMMAND_NOT & TOKEN_COMMAND_GOF);
 }

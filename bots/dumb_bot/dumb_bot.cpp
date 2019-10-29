@@ -174,6 +174,7 @@ int DumbBot::get_power_index(const Token &power_token) {
 }
 
 void DumbBot::process_now_message(const TokenMessage & /*incoming_msg*/) {
+    send_message_to_server(TOKEN_COMMAND_NOT & TOKEN_COMMAND_GOF);
 
     // Spring Moves/Retreats
     if ((m_map_and_units->current_season == DAIDE::TOKEN_SEASON_SPR)
@@ -227,6 +228,7 @@ void DumbBot::process_now_message(const TokenMessage & /*incoming_msg*/) {
 
     // Submitting orders
     send_orders_to_server();
+    send_message_to_server(TOKEN_COMMAND_GOF);
 }
 
 void DumbBot::calculate_factors(const WEIGHTING proximity_attack_weight, const WEIGHTING proximity_defense_weight) {

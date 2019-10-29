@@ -19,6 +19,8 @@
 
 #include "base_bot.h"
 
+namespace DAIDE {
+
 class HoldBot : public DAIDE::BaseBot {
     HoldBot(const HoldBot &other) = delete;                 // Copy constructor
     HoldBot(HoldBot &&rhs) = delete;                        // Move constructor
@@ -34,5 +36,7 @@ public:
 
     void process_now_message(const DAIDE::TokenMessage &incoming_msg) override;
 };
+
+} // namespace DAIDE
 
 #endif // DAIDE_CLIENT_BOTS_HOLDBOT_HOLDBOT_H
